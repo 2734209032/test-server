@@ -13,6 +13,7 @@ import tailwind from 'tailwindcss'
 const totalCPUs = cpus().length
 const maxWorkers = Math.ceil(totalCPUs / 2)
 export default defineConfig({
+    base:'/',
   plugins: [
     vitePluginImage(),
     react(),
