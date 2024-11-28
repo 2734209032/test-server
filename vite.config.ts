@@ -13,24 +13,24 @@ import tailwind from 'tailwindcss'
 const totalCPUs = cpus().length
 const maxWorkers = Math.ceil(totalCPUs / 2)
 export default defineConfig({
-    // base:'/',
+    base:'/test-server',
   plugins: [
-    // vitePluginImage(),
+    vitePluginImage(),
     react(),
     removeMapFilesPlugin(),
-    // visualizer({
-    //   emitFile: false,
-    //   filename: 'stats.html', //分析图生成的文件名
-    //   open: true //如果存在本地服务端口，将在打包后自动展示
-    // }),
-    // viteCompression({
-    //   verbose: true, //是否在控制台输出压缩结果
-    //   disable: false, //是否禁用,相当于开关在这里
-    //   threshold: 10240, //体积大于 threshold 才会被压缩,单位 b，1b=8B, 1B=1024KB  那我们这里相当于 9kb多吧，就会压缩
-    //   algorithm: 'gzip', //压缩算法,可选 [ 'gzip' , 'brotliCompress' ,'deflate' , 'deflateRaw']
-    //   ext: '.gz', //文件后缀
-    //   deleteOriginFile: false //是否删除原文件
-    // }),
+    visualizer({
+      emitFile: false,
+      filename: 'stats.html', //分析图生成的文件名
+      open: true //如果存在本地服务端口，将在打包后自动展示
+    }),
+    viteCompression({
+      verbose: true, //是否在控制台输出压缩结果
+      disable: false, //是否禁用,相当于开关在这里
+      threshold: 10240, //体积大于 threshold 才会被压缩,单位 b，1b=8B, 1B=1024KB  那我们这里相当于 9kb多吧，就会压缩
+      algorithm: 'gzip', //压缩算法,可选 [ 'gzip' , 'brotliCompress' ,'deflate' , 'deflateRaw']
+      ext: '.gz', //文件后缀
+      deleteOriginFile: false //是否删除原文件
+    }),
     AutoImport({
       eslintrc: {
         enabled: true // <-- this
@@ -105,16 +105,16 @@ export default defineConfig({
       maxWorkers: maxWorkers
     },
     rollupOptions: {
-    //   output: {
-    //     entryFileNames: '[name].[hash].js',
-    //     chunkFileNames: '[name].[hash].js',
-    //     assetFileNames: 'assets/[name].[hash][extname]',
-    //     manualChunks(id) {
-    //       if (id.includes('node_modules')) {
-    //         return id.toString().split('node_modules/')[1].split('/')[0].toString()
-    //       }
-    //     }
-    //   }
+      output: {
+        entryFileNames: '[name].[hash].js',
+        chunkFileNames: '[name].[hash].js',
+        assetFileNames: 'assets/[name].[hash][extname]',
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            return id.toString().split('node_modules/')[1].split('/')[0].toString()
+          }
+        }
+      }
     },
 
     sourcemap: true
