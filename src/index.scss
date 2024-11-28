@@ -1,0 +1,11 @@
+:root :root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --adm-font-size-main: 16px;
+}
+@import url('./assets/reset.scss');
+// @tailwind base;
+@tailwind components;
+@tailwind utilities;
